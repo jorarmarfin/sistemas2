@@ -38,7 +38,17 @@
                             <td>{{$seccion->nombre}}</td>
                             <td>{{$bitacora->persona->nombres}} {{$bitacora->persona->apellidos}}</td>
                             <td>{{$bitacora->persona->correo}}</td>
-                            <td>{{$bitacora->email_status}}</td>
+                            <td>
+                                @if(is_array(json_decode($bitacora->email_status, true)))
+                                    <ul>
+                                        @foreach(json_decode($bitacora->email_status, true) as $status)
+                                            <li>{{ $status['status'] }} - {{ $status['date'] }}</li>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    No hay estados
+                                @endif
+                            </td>
                             <td>{{$bitacora->updated_at }}</td>
                             <td>
                             </td>
