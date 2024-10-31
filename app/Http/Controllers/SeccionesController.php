@@ -242,8 +242,8 @@ class SeccionesController extends Controller
                     'fecha_inicio_id' => $item->fecha_inicio_id,
                     'created_at' => date('Y-m-d')
                 ]);
-//                Mail::to($item->correo)->send(new RegistroMatricula($item,'Only One Coin  | Inicio de clases','OnlyOneCoin@gmail.com'));
-                MassEmailSender::dispatch($item->toArray(),$id);
+                #Mail::to($item->correo)->send(new RegistroMatricula($item,'Only One Coin  | Inicio de clases','OnlyOneCoin@gmail.com'));
+                MassEmailSender::dispatch($item->toArray(),$id,'Only One Coin  | Inicio de clases','OnlyOneCoin@gmail.com');
                 #$this->sendBrevoEmail($item,$id);
 
             }

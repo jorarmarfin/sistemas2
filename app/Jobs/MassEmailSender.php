@@ -19,6 +19,8 @@ class MassEmailSender implements ShouldQueue
 
     private $bitacora_id;
     private $data;
+    private $subject;
+    private $to;
 
 
     /**
@@ -26,10 +28,12 @@ class MassEmailSender implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($data,$bitacora_id)
+    public function __construct($data,$bitacora_id,$subject,$to)
     {
         $this->data = $data;
         $this->bitacora_id = $bitacora_id;
+        $this->subject = $subject;
+        $this->to = $to;
     }
 
     /**
@@ -39,7 +43,7 @@ class MassEmailSender implements ShouldQueue
      */
     public function handle()
     {
-        $this->sendBrevoEmail($this->data,$this->bitacora_id);
+        $this->sendBrevoEmail($this->data,$this->bitacora_id,$this->subject,$this->to);
     }
 
 }
